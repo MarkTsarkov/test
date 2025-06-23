@@ -7,5 +7,5 @@ import (
 
 func NewRouter(app *fiber.App, service service.Iservice) {
 	app.Get("/counter/:bannerID", saveClick(service))
-	//app.Get("/stats/:id", api.getStats(service))
+	app.Post("/stats/:bannerID", getStats(service))
 }

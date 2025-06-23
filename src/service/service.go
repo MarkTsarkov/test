@@ -39,15 +39,6 @@ func (s *service) SaveClick(bannerID int) error {
 	}()
 	return nil
 }
-
-func (s *service) GetStats(ctx context.Context, bannerID int, tsFrom, tsTo time.Time) (data []model.ClickStat, err error) {
-	data, err = s.repo.GetStats(ctx, bannerID, tsFrom, tsTo)
-	if err != nil {
-		return nil, err
-	}
-	return data, nil
-}
-
 func (s *service) ParallelSender(ctx context.Context) {
 	ticker := time.NewTicker(2 * time.Second)
 	clicks := make(map[model.Click]int, 100)
@@ -103,4 +94,12 @@ func (s *service) Close(ctx context.Context) {
 		close(s.clicksCh)
 	default:
 	}
+}
+
+func (s *service) GetStats(ctx context.Context, bannerID int, tsFrom, tsTo time.Time) (data []model.ClickStat, err error) {
+	data, err = s.repo.GetStats(ctx, bannerID, tsFrom, tsTo)
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
 }

@@ -10,10 +10,10 @@ import (
 )
 
 // Всего запросов
-const totalRequests = 5000
+const totalRequests = 25000
 
 // Скорость отправки запросов (500 запросов/сек.)
-const requestsPerSecond = 500
+const requestsPerSecond = 1000
 
 // Возможные значения для ID
 const value1 = "1"
